@@ -1,10 +1,7 @@
-# -*- coding: utf-8 -*-
+
 """
 Created on Sat May 30 19:34:25 2020
-
-@author: aniru
 """
-
 
 import json
 import math
