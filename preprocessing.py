@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
 """
 This script creates the training, testing and validation directories and populates
-them with benign and malignant data
+them with benign and malignant data.
 """
+
 from model import *
 import keras
 
@@ -11,7 +11,7 @@ import numpy as np
 import shutil
 import random
 
-# # Creating Train / Val / Test folders (One time use)
+# Creating Train / Val / Test folders (One time use)
 root_dir = 'bk_data'
 diagnosis_dir = ['benign', 'malignant']
 classes = {
@@ -20,7 +20,7 @@ classes = {
 
 val_ratio = 0.2
 test_ratio = 0.1
-#TODO: even out classes assigned to training and testing
+
 for diag in diagnosis_dir:
     os.makedirs(os.path.join(root_dir, 'train', diag))
     os.makedirs(os.path.join(root_dir, 'val', diag))
@@ -43,14 +43,13 @@ for diag in diagnosis_dir:
                                                               [int(len(list_files)* (1 - val_ratio + test_ratio)),
                                                                int(len(list_files)* (1 - test_ratio))])
 
-
-
+    #Summary of separated data
     print('Total images: ', len(list_files))
     print('Training: ', len(train_FileNames))
     print('Validation: ', len(val_FileNames))
     print('Testing: ', len(test_FileNames))
 
-    # Copy-pasting images
+    # Copy-pasting images into directories
     for name in train_FileNames:
         shutil.copy(name, os.path.join(root_dir, 'train', diag))
 
